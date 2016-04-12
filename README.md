@@ -14,10 +14,10 @@ Not published.
 // In your express.js app:
 
 const path = require('path');
-const projectRoot = path.join(__dirname, '/..');
-const tus = require('tus-node-server');
+const publicFolder = path.join(__dirname, '../../public');
+const tus = require('tus-express');
 const uploadHandlers = new tus.Handlers();
-uploadHandlers.datastore = new tus.FileStore({ directory: projectRoot, path: path.join(projectRoot, 'tmp') });
+uploadHandlers.datastore = new tus.FileStore({ directory: publicFolder, path: 'tmp' });
 
 router.head('/videos/upload', (req, res, next) => {
   uploadHandlers.handle(req, res)
