@@ -1,13 +1,10 @@
 # tus-node-server
-[![Build Status](https://travis-ci.org/tus/tus-node-server.svg?branch=master)](https://travis-ci.org/tus/tus-node-server)
-[![Coverage Status](https://coveralls.io/repos/tus/tus-node-server/badge.svg?branch=master&service=github)](https://coveralls.io/github/tus/tus-node-server?branch=master)
-[![Dependency Status](https://david-dm.org/tus/tus-node-server.svg)](https://david-dm.org/tus/tus-node-server#info=dependencies)
 
-[TUS Protocol 1.0.0](http://tus.io/protocols/resumable-upload.html) Server Implementation.
+Fork of Ben Stahl's [tus-node-server](https://github.com/tus/tus-node-server)
 
 ## Installation
 
-Not published yet, [coming soon](https://github.com/tus/tus-node-server/milestones/1.0%20NPM%20Publish)!
+```npm install --save git+https://github.com/nuntio/tus-node-server#master```
 
 ## Quick Start
 
@@ -17,13 +14,13 @@ const tus = require('tus-node-server');
 
 const server = new tus.Server();
 server.datastore = new tus.FileStore({
-    path: '/files'
+  path: '/files'
 });
 
 const host = '127.0.0.1';
 const port = 8000;
 server.listen({ host, port }, () => {
-    console.log(`[${new Date().toLocaleTimeString()}] tus server listening at http://${host}:${port}`);
+  console.log(`[${new Date().toLocaleTimeString()}] tus server listening at http://${host}:${port}`);
 });
 ```
 

@@ -1,10 +1,10 @@
 {
   "name": "tus-node-server",
-  "description": "Node.js 4 ES2015 tus server, including a transpiled down version for older &lt; 1.0 versions",
+  "description": "Node.js tus server, forked from Ben Stahl's tus-node-server",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tus/tus-node-server.git"
+    "url": "git+https://github.com/nuntio/tus-node-server.git"
   },
   "keywords": [
     "tus",
@@ -16,14 +16,14 @@
     "api",
     "server"
   ],
-  "author": "Ben Stahl <bhstahl@gmail.com>",
+  "author": "Nuntio Technologies, Inc. <support@nuntio.tv>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tus/tus-node-server/issues"
+    "url": "https://github.com/nuntio/tus-node-server/issues"
   },
-  "homepage": "https://github.com/tus/tus-node-server#readme",
+  "homepage": "https://github.com/nuntio/tus-node-server#readme",
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 5.9.0"
   },
   "files": [
     "LICENSE",
@@ -52,5 +52,9 @@
   },
   "dependencies": {
     "crypto-rand": "0.0.2"
+  },
+  "optionalDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^7.0.0"
   }
 }
