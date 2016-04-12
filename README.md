@@ -1,6 +1,6 @@
 # tus-node-server
 
-Fork of Ben Stahl's [tus-node-server](https://github.com/tus/tus-node-server). Adapted for use as an express.js middleware.
+Fork of Ben Stahl's [tus-node-server](https://github.com/tus/tus-node-server). Adapted for use in express.js middlewares.
 
 ## Installation
 
@@ -14,15 +14,19 @@ Not published.
 // In your express.js app:
 
 const path = require('path');
-const tmpPath = path.join(__dirname, '/file');
-
+const projectRoot = path.join(__dirname, '/..');
 const tus = require('tus-node-server');
-const tusMiddleware = new tus.Handlers();
-tusMiddleware.datastore = new tus.FileStore({ path: tmpPath });
+const uploadHandlers = new tus.Handlers();
+uploadHandlers.datastore = new tus.FileStore({ directory: projectRoot, path: path.join(projectRoot, 'tmp') });
 
-app.all('/upload', tusMiddleware, (req, res, next) {
-  res.end(); // res.end() must be called
-})
+router.head('/videos/upload', (req, res, next) => {
+  uploadHandlers.handle(req, res)
+    .then(done => {
+      // Do stuff here
+      done(); // This is just res.end invoked
+    })
+    .catch(next);
+  });
 // ...
 ```
 
