@@ -1,10 +1,10 @@
 {
-  "name": "tus-node-server",
+  "name": "tus-express",
   "description": "Node.js tus server, forked from Ben Stahl's tus-node-server",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nuntio/tus-node-server.git"
+    "url": "git+https://github.com/nuntio/tus-express.git"
   },
   "keywords": [
     "tus",
@@ -19,9 +19,9 @@
   "author": "Nuntio Technologies, Inc. <support@nuntio.tv>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nuntio/tus-node-server/issues"
+    "url": "https://github.com/nuntio/tus-express/issues"
   },
-  "homepage": "https://github.com/nuntio/tus-node-server#readme",
+  "homepage": "https://github.com/nuntio/tus-express#readme",
   "engines": {
     "node": ">= 5.9.0"
   },
