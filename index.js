@@ -1,11 +1,11 @@
 'use strict';
 
-const Server = require('./lib/Server');
+const Handlers = require('./lib/Handlers');
 const DataStore = require('./lib/stores/DataStore');
 const FileStore = require('./lib/stores/FileStore');
 
 module.exports = {
-    Server: Server,
-    DataStore: DataStore,
-    FileStore: FileStore,
+  Handlers: Handlers,
+  DataStore: DataStore,
+  FileStore: FileStore,
 };
