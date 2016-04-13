@@ -2,32 +2,77 @@
 
 Fork of Ben Stahl's [tus-node-server](https://github.com/tus/tus-node-server). Adapted for use in express.js middlewares.
 
-## Installation
-
-Not published.
-
 ## Quick Start
 
 #### Build a middleware
 ```javascript
-// ...
-// In your express.js app:
-
-const path = require('path');
-const publicFolder = path.join(__dirname, '../../public');
+// In your express.js app...
+const directory = '/path/to/directory'
 const tus = require('tus-express');
 const uploadHandlers = new tus.Handlers();
 uploadHandlers.datastore = new tus.FileStore({ directory: publicFolder, path: 'tmp' });
 
-router.head('/videos/upload', (req, res, next) => {
+// CORE PROTOCOLS (HEAD, PATCH, OPTIONS)
+
+// "uploadHandlers.handle(req, res)" will always return a promise.
+
+router.head('/api/upload/:fileName', (req, res, next) {
+  // Handler expects either a req.fileName or a req.params.fileName,
+  // otherwise it will just create a random string and lose the
+  // original filename, but it will keep the extension.
   uploadHandlers.handle(req, res)
     .then(done => {
-      // Do stuff here
-      done(); // This is just res.end invoked
+      // Additional operations go here
+      done(); // Make sure to call done to end the response
     })
     .catch(next);
   });
-// ...
+});
+
+router.options('/api/upload/*', (req, res, next) {
+  uploadHandlers.handle(req, res)
+    .then(done => {
+      done();
+    })
+    .catch(next);
+  });
+});
+
+router.patch('/api/upload/:fileName', (req, res, next) {
+  uploadHandlers.handle(req, res)
+    .then(done => {
+      done();
+    })
+    .catch(next);
+  });
+});
+
+
+// EXTENSION (POST)
+
+router.post('/api/upload', (req, res, next) {
+  uploadHandlers.handle(req, res)
+    .then(done => {
+      done();
+    })
+    .catch(next);
+  });
+});
+
+
+// QUICK NOTE: On the client side, make sure to have
+// a slash at the end of the "endpoint" option.
+// For example, the Web API:
+// {
+//   ...options
+//   endpoint: "http://localhost:3000/api/upload/",
+//   ...options
+// }
+// ALSO, if you don't catch errors after
+// "uploadHandlers.handle(req, res)", then the errors
+// will not be thrown and the response won't be closed.
+// Make sure to catch the errors (and let express's error
+// catching middleware, for example).
 ```
 
 #### Create a file
