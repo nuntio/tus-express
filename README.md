@@ -1,4 +1,4 @@
-# tus-node-server
+# tus-express
 
 Fork of Ben Stahl's [tus-node-server](https://github.com/tus/tus-node-server). Adapted for use in express.js middlewares.
 
