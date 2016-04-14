@@ -25,7 +25,6 @@ router.head('/api/upload/:fileName', (req, res, next) => {
       done(); // Make sure to call done to end the response
     })
     .catch(next);
-  });
 });
 
 router.options('/api/upload/*', (req, res, next) => {
@@ -34,7 +33,6 @@ router.options('/api/upload/*', (req, res, next) => {
       done();
     })
     .catch(next);
-  });
 });
 
 router.patch('/api/upload/:fileName', (req, res, next) => {
@@ -43,7 +41,6 @@ router.patch('/api/upload/:fileName', (req, res, next) => {
       done();
     })
     .catch(next);
-  });
 });
 
 
@@ -55,7 +52,6 @@ router.post('/api/upload', (req, res, next) => {
       done();
     })
     .catch(next);
-  });
 });
 
 
